@@ -70,6 +70,13 @@ html {
   width: 100%;
 }
 
+/* Désactiver smooth scroll sur mobile pour éviter les blocages */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: var(--font-primary);
   color: var(--gray-900);
@@ -2484,5 +2491,53 @@ html, body {
 
   .floating-icon {
     max-width: 100%;
+  }
+}
+
+/* ============================================
+   OPTIMISATION SCROLL MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  /* Améliorer les performances de scroll */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  /* Désactiver les animations lourdes sur mobile */
+  .hero::after,
+  .floating-icons {
+    animation: none !important;
+  }
+
+  /* Simplifier les transitions */
+  .card,
+  .btn,
+  .nav-link {
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  /* Désactiver le parallax sur mobile */
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  /* Réduire les animations au scroll */
+  .animate-on-scroll {
+    transition: opacity 0.3s ease !important;
+  }
+
+  /* Optimiser le hero */
+  .hero {
+    will-change: auto;
+  }
+
+  /* Désactiver les effets 3D sur mobile */
+  .card:hover {
+    transform: translateY(-4px) !important;
   }
 }

@@ -160,6 +160,9 @@ class SCPBPremium {
 
   // Animations au scroll
   initScrollAnimations() {
+    // Réduire le threshold sur mobile pour de meilleures performances
+    const isMobile = window.innerWidth <= 768;
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -167,8 +170,8 @@ class SCPBPremium {
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: isMobile ? 0.05 : 0.1,
+      rootMargin: isMobile ? '0px' : '0px 0px -50px 0px'
     });
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
@@ -195,8 +198,13 @@ class SCPBPremium {
     });
   }
 
-  // Smooth scroll
+  // Smooth scroll (désactivé sur mobile)
   initSmoothScroll() {
+    // Désactiver sur mobile pour éviter les blocages de scroll
+    if (window.innerWidth <= 768) {
+      return;
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
