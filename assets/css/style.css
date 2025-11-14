@@ -2061,3 +2061,56 @@ a, button, .btn {
 body.dark-mode .typing-cursor {
   color: rgba(255, 255, 255, 0.9);
 }
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+.theme-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #698714 0%, #8ab91f 100%);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 24px rgba(105, 135, 20, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(180deg);
+  box-shadow: 0 12px 40px rgba(105, 135, 20, 0.5);
+}
+
+.theme-toggle .icon {
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+body.dark-mode .theme-toggle {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E5B8 100%);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+body.dark-mode .theme-toggle:hover {
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.25rem;
+  }
+}
