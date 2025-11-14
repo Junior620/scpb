@@ -10,7 +10,7 @@ class SCPBPremium {
 
   init() {
     const isMobile = window.innerWidth <= 768;
-    
+
     // Désactiver les animations lourdes sur mobile pour éviter les blocages de scroll
     if (!isMobile) {
       this.initScrollAnimations();
@@ -24,12 +24,12 @@ class SCPBPremium {
     } else {
       console.log('📱 Mode mobile - animations désactivées pour performance');
     }
-    
+
     // Toujours activer ces fonctions essentielles
     this.initHeaderScroll();
     this.initDarkMode();
     this.initMobileMenu();
-    
+
     console.log('🚀 SCPB Premium initialized');
   }
 
@@ -520,8 +520,13 @@ function initShrinkingHeader() {
   });
 }
 
-// 3. Effet de parallax sur les sections
+// 3. Effet de parallax sur les sections (DÉSACTIVÉ - causait un espace blanc)
 function initParallax() {
+  // Parallax désactivé pour éviter l'espace blanc au scroll
+  // Le hero descend trop et crée un espace vide
+  return;
+
+  /*
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const parallaxElements = document.querySelectorAll('.hero-container');
@@ -531,6 +536,7 @@ function initParallax() {
       el.style.transform = `translateY(${scrolled * speed}px)`;
     });
   });
+  */
 }
 
 // 4. Effet de tilt 3D sur les cards
