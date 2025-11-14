@@ -9,16 +9,27 @@ class SCPBPremium {
   }
 
   init() {
-    this.initScrollAnimations();
+    const isMobile = window.innerWidth <= 768;
+    
+    // Désactiver les animations lourdes sur mobile pour éviter les blocages de scroll
+    if (!isMobile) {
+      this.initScrollAnimations();
+      this.initSmoothScroll();
+      this.initParallax();
+      this.initCursor();
+      this.initMagneticButtons();
+      this.initFloatingIcons();
+      this.initTypingEffect();
+      console.log('💻 Mode desktop - toutes animations activées');
+    } else {
+      console.log('📱 Mode mobile - animations désactivées pour performance');
+    }
+    
+    // Toujours activer ces fonctions essentielles
     this.initHeaderScroll();
-    this.initSmoothScroll();
-    this.initParallax();
-    this.initCursor();
-    this.initMagneticButtons();
     this.initDarkMode();
-    this.initFloatingIcons();
-    this.initTypingEffect();
-    this.initMobileMenu();  // ✅ Menu mobile
+    this.initMobileMenu();
+    
     console.log('🚀 SCPB Premium initialized');
   }
 
@@ -162,7 +173,7 @@ class SCPBPremium {
   initScrollAnimations() {
     // Réduire le threshold sur mobile pour de meilleures performances
     const isMobile = window.innerWidth <= 768;
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
