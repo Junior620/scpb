@@ -17,8 +17,59 @@ class SCPBPremium {
     this.initMagneticButtons();
     this.initDarkMode();
     this.initFloatingIcons();
-    this.initTypingEffect();  // ✅ Effet typing
+    this.initTypingEffect();
+    this.initMobileMenu();  // ✅ Menu mobile
     console.log('🚀 SCPB Premium initialized');
+  }
+
+  // Menu mobile hamburger
+  initMobileMenu() {
+    // Créer le bouton hamburger
+    const header = document.querySelector('.header-container');
+    if (!header) return;
+
+    const menuToggle = document.createElement('button');
+    menuToggle.className = 'mobile-menu-toggle';
+    menuToggle.setAttribute('aria-label', 'Toggle menu');
+    menuToggle.innerHTML = '<span></span><span></span><span></span>';
+    
+    // Créer l'overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-menu-overlay';
+    document.body.appendChild(overlay);
+
+    // Ajouter le bouton au header
+    header.appendChild(menuToggle);
+
+    const nav = document.querySelector('.nav');
+    if (!nav) return;
+
+    // Toggle menu
+    const toggleMenu = () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Fermer le menu au clic sur un lien
+    nav.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Fermer le menu au redimensionnement
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && nav.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
   }
 
   // Effet de typing sur le hero
