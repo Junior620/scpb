@@ -1,0 +1,23 @@
+{
+  "name": "scpb-premium",
+  "version": "3.0.0",
+  "description": "Site web premium SCPB SARL - Design moderne et élégant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["scpb", "premium", "agriculture", "cameroun"],
+  "author": "SCPB SARL",
+  "license": "PROPRIETARY",
+  "dependencies": {
+    "express": "^4.18.2",
+    "compression": "^1.7.4",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
