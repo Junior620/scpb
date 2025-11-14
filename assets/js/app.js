@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initMobileMenuStandalone() {
   console.log('🍔 Initializing mobile menu...');
-  
+
   const header = document.querySelector('.header-container');
   if (!header) {
     console.error('❌ Header not found');
@@ -727,7 +727,7 @@ function initMobileMenuStandalone() {
   menuToggle.setAttribute('aria-label', 'Toggle menu');
   menuToggle.innerHTML = '<span></span><span></span><span></span>';
   menuToggle.style.cssText = 'display: flex !important;';
-  
+
   // Créer l'overlay
   const overlay = document.createElement('div');
   overlay.className = 'mobile-menu-overlay';
@@ -757,7 +757,7 @@ function initMobileMenuStandalone() {
     e.stopPropagation();
     toggleMenu();
   });
-  
+
   overlay.addEventListener('click', toggleMenu);
 
   // Fermer le menu au clic sur un lien
@@ -775,6 +775,6 @@ function initMobileMenuStandalone() {
       toggleMenu();
     }
   });
-  
+
   console.log('✅ Mobile menu initialized successfully');
 }
