@@ -66,8 +66,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
-  width: 100%;
 }
 
 /* Désactiver smooth scroll sur mobile pour éviter les blocages */
@@ -82,9 +80,10 @@ body {
   color: var(--gray-900);
   background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
   line-height: 1.7;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  max-width: 100vw;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.3s ease, color 0.3s ease;
@@ -142,7 +141,7 @@ a {
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -150,7 +149,7 @@ a {
 
 .logo {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -161,13 +160,13 @@ a {
 
 .nav {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
 }
 
 .nav-link {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--gray-900);
   position: relative;
   padding: 0.5rem 0;
@@ -198,12 +197,14 @@ a {
    HERO SECTION PREMIUM
    ============================================ */
 .hero {
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
   background: var(--gradient-dark);
+  margin-bottom: 0;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .hero::before {
@@ -232,7 +233,7 @@ a {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .floating-icon {
@@ -298,7 +299,7 @@ a {
 .hero-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: var(--space-lg) 2rem;
+  padding: 8rem 2rem 4rem;
   position: relative;
   z-index: 2;
 }
@@ -329,10 +330,12 @@ a {
 }
 
 .hero-title .highlight {
+  display: inline-block;
   background: var(--gradient-gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: var(--gold);
 }
 
 .hero-description {
@@ -414,8 +417,11 @@ a {
    SECTIONS PREMIUM
    ============================================ */
 .section {
-  padding: var(--space-xl) 2rem;
+  padding: var(--space-lg) 2rem;
   position: relative;
+  margin-top: 0;
+  z-index: 2;
+  background: inherit;
 }
 
 .section-container {
@@ -426,7 +432,7 @@ a {
 .section-header {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto var(--space-xl);
+  margin: 0 auto var(--space-lg);
 }
 
 .section-badge {
@@ -2356,7 +2362,6 @@ body.dark-mode .mobile-menu-toggle span {
     box-shadow: -4px 0 30px rgba(0, 0, 0, 0.2);
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
-    overflow-y: auto;
   }
 
   body.dark-mode .nav {
@@ -2437,12 +2442,6 @@ body.dark-mode .mobile-menu-toggle span {
   max-width: 100%;
 }
 
-html, body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  position: relative;
-}
-
 .hero,
 .section,
 .header,
@@ -2456,7 +2455,6 @@ html, body {
 .header-container,
 .footer-container {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* Fix pour les éléments qui dépassent */

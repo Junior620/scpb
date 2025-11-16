@@ -83,44 +83,10 @@ class SCPBPremium {
     });
   }
 
-  // Effet de typing sur le hero
+  // Effet de typing sur le hero - DÉSACTIVÉ pour éviter que le texte disparaisse
   initTypingEffect() {
-    const heroDescription = document.querySelector('.hero-description');
-
-    if (!heroDescription) return;
-
-    // Sauvegarder le texte original
-    const originalText = heroDescription.textContent.trim();
-
-    // Vider le contenu
-    heroDescription.textContent = '';
-    heroDescription.style.opacity = '1';
-
-    let charIndex = 0;
-    const typingSpeed = 30; // Vitesse en ms
-
-    // Fonction de typing
-    const type = () => {
-      if (charIndex < originalText.length) {
-        heroDescription.textContent += originalText.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingSpeed);
-      } else {
-        // Ajouter un curseur clignotant à la fin
-        const cursor = document.createElement('span');
-        cursor.className = 'typing-cursor';
-        cursor.textContent = '|';
-        heroDescription.appendChild(cursor);
-
-        // Faire disparaître le curseur après 2 secondes
-        setTimeout(() => {
-          cursor.style.opacity = '0';
-        }, 2000);
-      }
-    };
-
-    // Démarrer le typing après un délai
-    setTimeout(type, 1000);
+    // Effet désactivé - le texte reste visible en permanence
+    return;
   }
 
   // Mode Dark/Light
@@ -628,42 +594,10 @@ function initScrollAnimations() {
   });
 }
 
-// 8. Effet de typing sur le hero (amélioré)
+// 8. Effet de typing sur le hero - DÉSACTIVÉ
 function initTypingEffect() {
-  const heroDescription = document.querySelector('.hero-description');
-
-  if (!heroDescription) return;
-
-  const text = heroDescription.textContent;
-  heroDescription.textContent = '';
-  heroDescription.style.opacity = '1';
-
-  // Créer un span pour le curseur
-  const cursor = document.createElement('span');
-  cursor.className = 'typing-cursor';
-  cursor.textContent = '|';
-  cursor.style.animation = 'blink 0.7s infinite';
-
-  let i = 0;
-  const speed = 30; // Vitesse de frappe (ms)
-
-  const typeWriter = () => {
-    if (i < text.length) {
-      heroDescription.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else {
-      // Ajouter le curseur à la fin
-      heroDescription.appendChild(cursor);
-      // Retirer le curseur après 2 secondes
-      setTimeout(() => {
-        cursor.style.opacity = '0';
-      }, 2000);
-    }
-  };
-
-  // Démarrer après un petit délai
-  setTimeout(typeWriter, 800);
+  // Effet désactivé pour garder le texte visible en permanence
+  return;
 }
 
 // 9. Curseur personnalisé avec trail
@@ -712,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initScrollAnimations();
   initGlowEffect();
-  initTypingEffect();  // ✅ Effet typing activé
+  // initTypingEffect();  // ❌ Effet typing désactivé pour garder le texte visible
 
   // Optionnel: activer le curseur personnalisé (peut être lourd)
   // initCustomCursor();
